@@ -66,7 +66,7 @@ async def on_chat_start():
         cl.user_session.set("data", database)
         await cl.Message(content="アップロードが完了しました！").send()
 
-    llm = ChatOpenAI(model="gpt-4-0125-preview", temperature=0)
+    llm = ChatOpenAI(model="gpt-4o", temperature=0)
     message_history = ChatMessageHistory()
     memory = ConversationBufferMemory(
         memory_key="chat_history",
