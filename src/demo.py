@@ -1,24 +1,13 @@
 import chainlit as cl
 
 
-@cl.step
-def tool():
-    return "Response from the tool!"
+# チャットが開始されたときに実行される関数
+@cl.on_chat_start
+async def main():
+    # ローカルのPDFファイルをインラインで表示
+    elements = [
+      cl.Pdf(name="pdf1", display="inline", path="./ronbun.pdf")  # ローカルのPDFファイルのパスを指定
+    ]
 
-
-@cl.on_message  # this function will be called every time a user inputs a message in the UI
-async def main(message: cl.Message):
-    """
-    This function is called every time a user inputs a message in the UI.
-    It sends back an intermediate response from the tool, followed by the final answer.
-    Args:
-        message: The user's message.
-    Returns:
-        None.
-    """
-
-    # Call the tool
-    tool()
-
-    # Send the final answer.
-    await cl.Message(content="This is the final answer").send()
+    # メッセージと共にPDFを表示
+    await cl.Message(content="こちらのPDFをご覧ください！", elements=elements).send()
