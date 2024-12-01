@@ -1,6 +1,7 @@
 chainlit==1.0.200
 openai==0.28.0  # 最新バージョンに更新
 python-dotenv==1.0.0  # .envファイルからAPIキーを読み込むため
-faiss-cpu==1.7.3
+faiss-cpu
 numpy
 pdfplumber
+PyPDF2
